@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package quiz;
+
+// Define the Question message
+message Question {
+  string id = 1;                    // Unique identifier for the question
+  string type = 2;                  // Type of the question (e.g., ANAGRAM, MCQ, READ_ALONG)
+  string title = 3;                 // Title or prompt for the question
+  repeated Option options = 4;      // Options for MCQ type questions
+  repeated Block blocks = 5;        // Blocks for ANAGRAM or similar questions
+  string solution = 6;              // Solution for the question
+  string siblingId = 7;             // Sibling question reference
+}
+
+// Define the Option message for MCQ type questions
+message Option {
+  string text = 1;                  // Text of the option
+  bool isCorrectAnswer = 2;         // Indicates if this is the correct answer
+}
+
+// Define the Block message for ANAGRAM or similar questions
+message Block {
+  string text = 1;                  // Text of the block
+  bool showInOption = 2;            // Indicates if the block should be shown in options
+  bool isAnswer = 3;                // Indicates if the block is part of the answer
+}
+
+// Define the request to fetch questions
+message GetQuestionsRequest {
+  int32 limit = 1;                  // Limit on the number of questions to fetch
+  int32 offset = 2;                 // Offset for pagination
+  string typeFilter = 3;            // Filter by question type (optional)
+}
+
+// Define the response with a list of questions
+message GetQuestionsResponse {
+  repeated Question questions = 1;  // List of questions
+}
+
+// Define the request to submit an answer
+message SubmitAnswerRequest {
+  string questionId = 1;            // ID of the question being answered
+  string userAnswer = 2;            // User's answer
+}
+
+// Define the response for answer submission
+message SubmitAnswerResponse {
+  bool isCorrect = 1;               // Indicates if the answer is correct
+  string correctAnswer = 2;         // Correct answer for the question
+}
+
+// Define the QuizService
+service QuizService {
+  // Get a list of questions
+  rpc GetQuestions(GetQuestionsRequest) returns (GetQuestionsResponse);
+
+  // Submit an answer
+  rpc SubmitAnswer(SubmitAnswerRequest) returns (SubmitAnswerResponse);
+}

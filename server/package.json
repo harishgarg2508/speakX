@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.s",
+    "dev": "nodemon server.js",
+    "setup-db": "node db/scripts/createIndexes.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "grpc-web": "^1.5.0",
+    "mongodb": "^6.12.0"
+  },
+  "devDependencies": {
+    "@grpc/grpc-js": "^1.12.5",
+    "@grpc/proto-loader": "^0.7.13",
+    "grpc-tools": "^1.12.4",
+    "nodemon": "^3.1.9"
+  }
+}
