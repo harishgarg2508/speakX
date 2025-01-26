@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/322691c6-c2c6-4f4b-b825-5e37b9a05d7a) ![image](https://github.com/user-attachments/assets/59db3dc8-7052-4702-bf9e-67aaca6de06c)
+![image](https://github.com/user-attachments/assets/322691c6-c2c6-4f4b-b825-5e37b9a05d7a) 
 
 
 
@@ -85,33 +85,7 @@ Advanced search application with support for MCQs, Reading Comprehension, and An
         - `GET /api/suggestions`
 
 ## **Flowchart**
-```
-flowchart TD
-    A[User types in search bar] -->|Triggers| B[handleInputChange]
-    B -->|Debounced 300ms| C[handleSearch function]
-    C -->|Creates URL params| D[API Request]
-    D -->|Fetch to localhost:3000| E[Express Server]
-    E -->|MongoDB Query| F[MongoDB Atlas]
-    F -->|Returns Documents| E
-    E -->|JSON Response| D
-    D -->|Sets State| G[Update React State]
-    G -->|Renders| H[Results Display]
-
-    subgraph Frontend
-    A
-    B[handleInputChange<br/>- Updates searchQuery<br/>- Resets page to 1]
-    C[handleSearch<br/>- Creates query params<br/>- Manages loading state]
-    G[State Updates<br/>- results<br/>- pagination<br/>- loading]
-    H[Display Components<br/>- MCQ Cards<br/>- Reading Cards<br/>- Anagram Cards]
-    end
-
-    subgraph Backend
-    E[Express Server<br/>- Validates params<br/>- Builds query]
-    end
-
-    subgraph Database
-    F[MongoDB Atlas<br/>- Executes query<br/>- Returns matching docs]
-    end
+![image](https://github.com/user-attachments/assets/b9713599-e0c0-49be-be5b-0fa9e8aa8fc8)
 Data Flow Details
 User Input → Frontend
 
