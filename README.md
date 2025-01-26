@@ -1,81 +1,86 @@
 # SpeakX Search Application
 
-## Overview
+## **Overview**
 Advanced search application with support for MCQs, Reading Comprehension, and Anagrams. Features real-time search, filtering, and sorting capabilities.
 
-## Tech Stack
-- Frontend: React.js, Material-UI
-- Backend: Node.js, Express
-- Database: MongoDB Atlas
-- Additional: gRPC, Envoy Proxy
+## **Tech Stack**
+- **Frontend**: React.js, Material-UI
+- **Backend**: Node.js, Express
+- **Database**: MongoDB Atlas
+- **Additional**: gRPC, Envoy Proxy
 
-## Prerequisites
+## **Prerequisites**
 - Node.js v14+
 - MongoDB Atlas account
 - Envoy Proxy
 
-## Installation
+## **Installation**
 
-1. Clone repository:
-```bash
-git clone <repository-url>
+1. **Clone repository**:
+    ```bash
+    git clone <repository-url>
+    ```
 
-# Server dependencies
-cd server
-npm install
+2. **Server dependencies**:
+    ```bash
+    cd server
+    npm install
+    ```
 
-# Client dependencies
-cd client
-npm install
+3. **Client dependencies**:
+    ```bash
+    cd client
+    npm install
+    ```
 
-Environment Setup: Create .env in server directory:
-GRPC_SERVER_PORT=50051
-MONGODB_URI=your_mongodb_connection_string
+4. **Environment Setup**: Create `.env` in the server directory:
+    ```env
+    GRPC_SERVER_PORT=50051
+    MONGODB_URI=your_mongodb_connection_string
+    ```
 
+## **Running the Application**
 
+1. **Start Backend**:
+    ```bash
+    cd server
+    npm start
+    ```
 
-Running the Application
-Start Backend:
-cd server
-npm start
+2. **Start Frontend**:
+    ```bash
+    cd client
+    npm start
+    ```
 
+3. **Access application at**: http://localhost:3000
 
-Start Frontend:
-cd client
-npm start
+## **Features**
+- **Search Functionality**
+    - Real-time search with debouncing
+    - Filter by question types (MCQ, READ_ALONG, ANAGRAM)
+    - Sort by title or type
+    - Pagination support
+- **Question Types**
+    - **MCQ**
+        - Multiple choice questions
+        - Correct answer highlighting
+        - Color-coded cards
+    - **Reading Comprehension**
+        - Linked questions
+        - Content preview
+    - **Anagrams**
+        - Word arrangement
+        - Solution display
+- **API Documentation**
+    - **REST Endpoints**
+        - `GET /api/search`
+            - Query params: query, page, limit, sortBy, sortOrder, types
+        - `GET /api/question-types`
+        - `GET /api/suggestions`
 
-
-
-Access application at: http://localhost:3000
-
-
-Features
-Search Functionality
-Real-time search with debouncing
-Filter by question types (MCQ, READ_ALONG, ANAGRAM)
-Sort by title or type
-Pagination support
-Question Types
-MCQ
-
-Multiple choice questions
-Correct answer highlighting
-Color-coded cards
-Reading Comprehension
-
-Linked questions
-Content preview
-Anagrams
-
-Word arrangement
-Solution display
-API Documentation
-REST Endpoints
-GET /api/search
-Query params: query, page, limit, sortBy, sortOrder, types
-GET /api/question-types
-GET /api/suggestions
-
+## **Flowchart**
+```mermaid
 flowchart TD
     A[User types in search bar] -->|Triggers| B[handleInputChange]
     B -->|Debounced 300ms| C[handleSearch function]
@@ -102,10 +107,7 @@ flowchart TD
     subgraph Database
     F[MongoDB Atlas<br/>- Executes query<br/>- Returns matching docs]
     end
-
-
-Data Flow Details:
-
+Data Flow Details
 User Input → Frontend
 
 Search input triggers handleInputChange
