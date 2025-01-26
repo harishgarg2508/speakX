@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package search;
+
+message SearchRequest {
+    string query = 1;
+    int32 limit = 2;
+}
+
+message SearchResult {
+    string id = 1;
+    map<string, string> fields = 2;
+}
+
+message SearchResponse {
+    repeated SearchResult results = 1;
+}
+
+service SearchService {
+    rpc GetSearchSuggestions(SearchRequest) returns (SearchResponse);
+}

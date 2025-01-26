@@ -26,7 +26,10 @@ const rl = readline.createInterface({
 
 function getSearchSuggestions(query) {
     return new Promise((resolve, reject) => {
-        client.getSearchSuggestions({ query, limit: 5 }, (error, response) => {
+        client.getSearchSuggestions({ 
+            query,
+            limit: 55
+        }, (error, response) => {
             if (error) {
                 reject(error);
             } else {
@@ -37,20 +40,21 @@ function getSearchSuggestions(query) {
 }
 
 async function interactiveSearch() {
-    console.log("Start typing to search (press Ctrl+C to exit):");
+    console.log("Enter search term (press Ctrl+C to exit):");
+    
     rl.on('line', async (input) => {
         if (input.length > 0) {
             try {
-                const suggestions = await getSearchSuggestions(input);
-                console.log("\nSearch suggestions:");
-                suggestions.forEach((result, index) => {
-                    console.log(`${index + 1}. ${result.title} - ${result.description}`);
-                });
-                console.log("\nContinue typing to refine your search:");
+                const results = await getSearchSuggestions(input);
+                console.log('Search Results:', JSON.stringify(results, null, 2));
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error:', error.message);
             }
         }
+    });
+
+    rl.on('close', () => {
+        process.exit(0);
     });
 }
 

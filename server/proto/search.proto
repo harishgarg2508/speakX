@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package search;
+
+service SearchService {
+  rpc Search (SearchRequest) returns (SearchResponse);
+  rpc GetSearchSuggestions (SuggestionRequest) returns (SuggestionResponse);
+}
+
+message SearchRequest {
+  string query = 1;
+  int32 limit = 2;
+  repeated string filters = 3;
+}
+
+message SearchResponse {
+  repeated SearchResult results = 1;
+  int32 total_count = 2;
+  string search_type = 3;
+}
+
+message SearchResult {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  string type = 4;
+  double score = 5;
+}
+
+message SuggestionRequest {
+  string query = 1;
+  int32 limit = 2;
+}
+
+message SuggestionResponse {
+  repeated Suggestion suggestions = 1;
+}
+
+message Suggestion {
+  string text = 1;
+  string type = 2;
+}
