@@ -1,3 +1,10 @@
+![image](https://github.com/user-attachments/assets/322691c6-c2c6-4f4b-b825-5e37b9a05d7a)
+![image](https://github.com/user-attachments/assets/37f7c276-c608-4466-8609-e873f522dfa5)
+![image](https://github.com/user-attachments/assets/59db3dc8-7052-4702-bf9e-67aaca6de06c)
+
+
+
+
 # SpeakX Search Application
 
 ## **Overview**
