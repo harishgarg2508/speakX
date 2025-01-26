@@ -1,5 +1,5 @@
 
-# SpeakX Search Application
+# Advance Search Application
 
 ## **Overview**
 Advanced search application with support for MCQs, Reading Comprehension, and Anagrams. Features real-time search, filtering, and sorting capabilities.
