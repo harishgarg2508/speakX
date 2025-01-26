@@ -4,6 +4,9 @@
 ## **Overview**
 Advanced search application with support for MCQs, Reading Comprehension, and Anagrams. Features real-time search, filtering, and sorting capabilities.
 
+![image](https://github.com/user-attachments/assets/b117b4c8-377b-4f72-8deb-247d7123d628)
+
+
 ## **Tech Stack**
 - **Frontend**: React.js, Material-UI
 - **Backend**: Node.js, Express
