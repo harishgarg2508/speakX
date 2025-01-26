@@ -1,7 +1,3 @@
-![image](https://github.com/user-attachments/assets/98937d07-fa56-4c14-89bd-127e8fcfb959)
-
-
-
 
 # SpeakX Search Application
 
@@ -85,7 +81,7 @@ Advanced search application with support for MCQs, Reading Comprehension, and An
         - `GET /api/suggestions`
 
 ## **Flowchart**
-![image](https://github.com/user-attachments/assets/b9713599-e0c0-49be-be5b-0fa9e8aa8fc8)
+![image](https://github.com/user-attachments/assets/98937d07-fa56-4c14-89bd-127e8fcfb959)
 Data Flow Details
 User Input → Frontend
 
