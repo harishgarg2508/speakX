@@ -75,3 +75,64 @@ GET /api/search
 Query params: query, page, limit, sortBy, sortOrder, types
 GET /api/question-types
 GET /api/suggestions
+
+flowchart TD
+    A[User types in search bar] -->|Triggers| B[handleInputChange]
+    B -->|Debounced 300ms| C[handleSearch function]
+    C -->|Creates URL params| D[API Request]
+    D -->|Fetch to localhost:3000| E[Express Server]
+    E -->|MongoDB Query| F[MongoDB Atlas]
+    F -->|Returns Documents| E
+    E -->|JSON Response| D
+    D -->|Sets State| G[Update React State]
+    G -->|Renders| H[Results Display]
+
+    subgraph Frontend
+    A
+    B[handleInputChange<br/>- Updates searchQuery<br/>- Resets page to 1]
+    C[handleSearch<br/>- Creates query params<br/>- Manages loading state]
+    G[State Updates<br/>- results<br/>- pagination<br/>- loading]
+    H[Display Components<br/>- MCQ Cards<br/>- Reading Cards<br/>- Anagram Cards]
+    end
+
+    subgraph Backend
+    E[Express Server<br/>- Validates params<br/>- Builds query]
+    end
+
+    subgraph Database
+    F[MongoDB Atlas<br/>- Executes query<br/>- Returns matching docs]
+    end
+
+
+Data Flow Details:
+
+User Input → Frontend
+
+Search input triggers handleInputChange
+Debounced search prevents excessive API calls
+Updates searchQuery state
+Frontend → Backend
+
+Creates URL with query parameters
+Sends GET request to /api/search
+Includes pagination, sorting, filtering
+Backend → Database
+
+Express receives request
+Builds MongoDB query
+Executes search on Atlas cluster
+Database → Backend
+
+Returns matching documents
+Includes pagination data
+Formats response
+Backend → Frontend
+
+Returns JSON response
+Updates React state
+Triggers re-render
+Frontend → Display
+
+Renders type-specific cards
+Shows pagination controls
+Displays loading states
