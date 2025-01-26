@@ -1,4 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { createTheme, ThemeProvider } from '@mui/material';
+
 import { 
     Container, 
     TextField, 
@@ -23,12 +25,48 @@ import {
 } from '@mui/material';
 import debounce from 'lodash/debounce';
 
-// MCQ Display Component
+// MCQ Display 
+
+const theme = createTheme({
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: {
+          body: {
+            background: 'linear-gradient(45deg,rgb(190, 128, 35) 30%,rgb(61, 46, 107) 90%)',
+            minHeight: '100vh',
+          },
+        },
+      },
+    },
+  });
+
+const typeColorMap = {
+    MCQ: {
+      background: '#FFEB3B',     // Bright Yellow
+      border: '#FBC02D'          // Amber
+    },
+    ANAGRAM: {
+      background: '#4FC3F7',     // Sky Blue
+      border: '#0288D1'          // Deep Sky Blue
+    },
+    READ_ALONG: {
+      background: '#81C784',     // Light Green
+      border: '#388E3C'          // Forest Green
+    },
+    CONTENT_ONLY: {
+      background: '#FF8A65',     // Coral
+      border: '#D84315'          // Dark Orange
+    }
+  };
+  
+  
+  
 // MCQ Display Component
 const MCQDisplay = ({ options = [] }) => {
   console.log('MCQ Options:', options); // Debug log
   
   return (
+    
       <Box sx={{ mt: 2 }}>
           {options && options.length > 0 ? (
               <RadioGroup>
@@ -236,8 +274,15 @@ function App() {
     };
 
     return (
+        <ThemeProvider theme={theme}>
+        
         <Container maxWidth="md">
-            <Box sx={{ my: 4 }}>
+            <Box sx={{  my: 4,  
+                minHeight: '100vh',
+                backgroundColor: 'rgba(160, 162, 162, 0.8)',
+                borderRadius: 2,
+                boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .1)',
+                p: 3 }}>
                 <Typography variant="h4" component="h1" gutterBottom align="center">
                     Advanced Search
                 </Typography>
@@ -340,16 +385,19 @@ function App() {
 
                 {/* Results */}
                 {results.map((result) => (
-    <Card 
-        key={result.id} 
-        sx={{ 
-            mb: 2,
-            '&:hover': {
-                boxShadow: 6,
-                transform: 'translateY(-2px)',
-                transition: 'all 0.3s ease-in-out'
-            }
-        }}
+   <Card 
+   key={result.id} 
+   sx={{ 
+       mb: 2,
+       backgroundColor: typeColorMap[result.type]?.background || '#FFFFFF',
+       borderLeft: `6px solid ${typeColorMap[result.type]?.border || '#grey'}`,
+       '&:hover': {
+           boxShadow: 6,
+           transform: 'translateY(-2px)',
+           transition: 'all 0.3s ease-in-out'
+       }
+   }}
+
     >
         <CardContent>
             <Typography variant="h6" component="h2">
@@ -418,6 +466,7 @@ function App() {
                 )}
             </Box>
         </Container>
+        </ThemeProvider>
     );
 }
 
