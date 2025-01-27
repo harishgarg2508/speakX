@@ -57,7 +57,7 @@ Advanced search application with support for MCQs, Reading Comprehension, and An
 1. **Start Backend**:
     ```bash
     cd server
-    npm start
+    node server.js
     ```
 
 2. **Start Frontend**:
