@@ -4,7 +4,7 @@
 ## **Overview**
 Advanced search application with support for MCQs, Reading Comprehension, and Anagrams. Features real-time search, filtering, and sorting capabilities.
 
-![mongo_db_data_fetching (1)](https://github.com/user-attachments/assets/1b386d5a-1128-47aa-baf1-8d8acc6e60a3) ![mongo_db_data_fetching (2)](https://github.com/user-attachments/assets/73f8b407-e2ff-4ff6-94a1-1209a8f228f5)
+![mongo_db_data_fetching (1)](https://github.com/user-attachments/assets/1b386d5a-1128-47aa-baf1-8d8acc6e60a3)     ![mongo_db_data_fetching (2)](https://github.com/user-attachments/assets/73f8b407-e2ff-4ff6-94a1-1209a8f228f5)
 ![mongo_db_data_fetching (3)](https://github.com/user-attachments/assets/70dd3299-1226-464f-beab-c098c7d8ade7)
 
 
